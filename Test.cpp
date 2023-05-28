@@ -1,7 +1,7 @@
 #include "doctest.h"
-#include "sources/MagicalContainer.h"
+#include "sources/MagicalContainer.hpp"
 #include <iostream>
-
+using namespace ariel;
 TEST_CASE("AscendingIterator begin and end")
 {
     MagicalContainer container;
@@ -10,7 +10,7 @@ TEST_CASE("AscendingIterator begin and end")
     container.addElement(5);
     container.addElement(4);
     container.addElement(3);
-    AscendingIterator ascIter(container);
+    MagicalContainer::AscendingIterator ascIter(container);
     int *intptrb = ascIter.begin();
     CHECK(*intptrb == 1);
     int *intptre = ascIter.end();
@@ -24,7 +24,7 @@ TEST_CASE("AscendingIterator ++")
     container.addElement(100);
     container.addElement(4);
     container.addElement(5);
-    AscendingIterator ascIter(container);
+    MagicalContainer::AscendingIterator ascIter(container);
     int *num = ascIter.begin();
     CHECK(*num == 1);
     ++ascIter;
@@ -44,8 +44,8 @@ TEST_CASE("AscendingIterator < , != , ==")
     container.addElement(2);
     container.addElement(200);
     container.addElement(3);
-    AscendingIterator ascIter1(container);
-    AscendingIterator ascIter2(container);
+    MagicalContainer::AscendingIterator ascIter1(container);
+    MagicalContainer::AscendingIterator ascIter2(container);
     CHECK(ascIter1 == ascIter2);
     ++ascIter1;
     CHECK(ascIter1 != ascIter2);
@@ -61,7 +61,7 @@ TEST_CASE("PrimeIterator begin and end")
     container.addElement(4);
     container.addElement(5);
 
-    AscendingIterator priIter(container);
+    MagicalContainer::AscendingIterator priIter(container);
     int *intptrb = priIter.begin();
     CHECK(*intptrb == 1);
     int *intptre = priIter.end();
@@ -75,7 +75,7 @@ TEST_CASE("PrimeIterator ++")
     container.addElement(3);
     container.addElement(4);
     container.addElement(5);
-    AscendingIterator priIter(container);
+    MagicalContainer::AscendingIterator priIter(container);
     int *num = priIter.begin();
     CHECK(*num == 1);
     ++priIter;
@@ -93,8 +93,8 @@ TEST_CASE("PrimeIterator < , != , ==")
     container.addElement(2);
     container.addElement(200);
     container.addElement(3);
-    AscendingIterator priIter1(container);
-    AscendingIterator priIter2(container);
+    MagicalContainer::AscendingIterator priIter1(container);
+    MagicalContainer::AscendingIterator priIter2(container);
     CHECK(priIter1 == priIter2);
     ++priIter1;
     ++priIter2;
@@ -111,7 +111,7 @@ TEST_CASE("SideCrossIterator begin and end")
     container.addElement(4);
     container.addElement(5);
 
-    AscendingIterator sidIter(container);
+    MagicalContainer::AscendingIterator sidIter(container);
     int *intptrb = sidIter.begin();
     CHECK(*intptrb == 1);
     int *intptre = sidIter.end();
@@ -125,7 +125,7 @@ TEST_CASE("SideCrossIterator ++")
     container.addElement(3);
     container.addElement(4);
     container.addElement(5);
-    AscendingIterator sidIter(container);
+    MagicalContainer::AscendingIterator sidIter(container);
     int *num = sidIter.begin();
     CHECK(*num == 1);
     ++sidIter;
@@ -145,8 +145,8 @@ TEST_CASE("SideCrossIterator < , != , ==")
     container.addElement(2);
     container.addElement(200);
     container.addElement(3);
-    AscendingIterator sidIter1(container);
-    AscendingIterator sidIter2(container);
+    MagicalContainer::AscendingIterator sidIter1(container);
+    MagicalContainer::AscendingIterator sidIter2(container);
     CHECK(sidIter1 == sidIter2);
     ++sidIter1;
     CHECK(sidIter1 != sidIter2);
