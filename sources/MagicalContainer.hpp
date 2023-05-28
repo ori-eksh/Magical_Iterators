@@ -13,11 +13,11 @@ namespace ariel
         int containerSize;
 
     public:
-        MagicalContainer() {}
         void addElement(int element);
         void removeElement(int element);
         int size() const;
         const std::vector<int> &getElements() const;
+        MagicalContainer() : containerSize(0) {}
 
         /******************/
         class AscendingIterator
@@ -26,20 +26,24 @@ namespace ariel
             int size;
 
         public:
-            AscendingIterator(const auto)
+            AscendingIterator() : size(0)
             {
-                this->size = 0;
+            }
+            AscendingIterator(const auto argu) : size(0)
+            {
             }
 
-            bool hasNext() const
+            static bool hasNext()
             {
                 return false;
             }
 
-            int next()
+            static int next()
             {
                 if (!hasNext())
+                {
                     throw std::out_of_range("Iterator reached the end of the container.");
+                }
 
                 return 0;
             }
@@ -65,14 +69,17 @@ namespace ariel
                 return false;
             }
 
-            int *begin()
+            static int *begin()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
-            int *end()
+
+            static int *end()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
         };
@@ -81,17 +88,22 @@ namespace ariel
         {
         private:
         public:
-            PrimeIterator(const auto) {}
+            PrimeIterator() {}
+            PrimeIterator(const auto argu)
+            {
+            }
 
-            bool hasNext() const
+            static bool hasNext()
             {
                 return false;
             }
 
-            int next()
+            static int next()
             {
                 if (!hasNext())
+                {
                     throw std::out_of_range("Iterator reached the end of the container.");
+                }
 
                 return 0;
             }
@@ -116,14 +128,17 @@ namespace ariel
             {
                 return false;
             }
-            int *begin()
+            static int *begin()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
-            int *end()
+
+            static int *end()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
         };
@@ -134,17 +149,22 @@ namespace ariel
         {
         private:
         public:
-            SideCrossIterator(const auto) {}
+            SideCrossIterator() {}
+            SideCrossIterator(const auto argu)
+            {
+            }
 
-            bool hasNext() const
+            static bool hasNext()
             {
                 return false;
             }
 
-            int next()
+            static int next()
             {
                 if (!hasNext())
+                {
                     throw std::out_of_range("Iterator reached the end of the container.");
+                }
 
                 return 0;
             }
@@ -169,14 +189,17 @@ namespace ariel
             {
                 return false;
             }
-            int *begin()
+            static int *begin()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
-            int *end()
+
+            static int *end()
             {
-                int *ret;
+                static int number = 0;
+                int *ret = &number;
                 return ret;
             }
         };
@@ -184,12 +207,16 @@ namespace ariel
         static bool isPrime(int number)
         {
             if (number <= 1)
+            {
                 return false;
+            }
 
             for (int i = 2; i <= std::sqrt(number); ++i)
             {
                 if (number % i == 0)
+                {
                     return false;
+                }
             }
 
             return true;
